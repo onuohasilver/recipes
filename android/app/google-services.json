@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "234162802886",
+    "firebase_url": "https://calories-1.firebaseio.com",
+    "project_id": "calories-1",
+    "storage_bucket": "calories-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234162802886:android:878c4d2be3c7139d2287c7",
+        "android_client_info": {
+          "package_name": "com.example.recipify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234162802886-hijllf6fjfm278ceebhv8iq9t7tlsvql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgpH1gQI-4yLpy2oGt6uORxoHAkAP94fI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234162802886-hijllf6fjfm278ceebhv8iq9t7tlsvql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234162802886:android:014913a9f20ece492287c7",
+        "android_client_info": {
+          "package_name": "com.obinna.caloried"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234162802886-hijllf6fjfm278ceebhv8iq9t7tlsvql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgpH1gQI-4yLpy2oGt6uORxoHAkAP94fI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234162802886-hijllf6fjfm278ceebhv8iq9t7tlsvql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234162802886:android:b09fdded746de4562287c7",
+        "android_client_info": {
+          "package_name": "com.onuohasilver.github"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234162802886-hijllf6fjfm278ceebhv8iq9t7tlsvql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgpH1gQI-4yLpy2oGt6uORxoHAkAP94fI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234162802886-hijllf6fjfm278ceebhv8iq9t7tlsvql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
