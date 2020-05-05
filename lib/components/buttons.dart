@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class SlimButton extends StatelessWidget {
-  SlimButton({this.onTap, this.label});
+  SlimButton({this.onTap, this.label,this.color,this.textColor});
   final String label;
   final Function onTap;
+  final Color color;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +17,14 @@ class SlimButton extends StatelessWidget {
             child: Text(
               label,
               style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
+                  TextStyle(color: this.textColor, fontWeight: FontWeight.w600),
             ),
           ),
           elevation: 10,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          color: Colors.white),
+          color:color),
     );
   }
 }
