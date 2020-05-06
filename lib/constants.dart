@@ -14,3 +14,5 @@ final kLoginCardDecoration=BoxDecoration(
                       BoxShadow(color: Colors.black12, blurRadius: 18.0),
                     ],
                   );
+
+const kTextFieldPadding= EdgeInsets.fromLTRB(18.0, 3.0, 18.0, 3.0);

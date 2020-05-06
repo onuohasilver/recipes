@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
-class UserInfo extends ChangeNotifier{
-  UserInfo(this.email,this.password);
+class UserData extends ChangeNotifier {
+  String email = 'asas';
   String password;
-  String email;
-
-  void updatePassword(passwordValue){
-    password=passwordValue;
+  updateEmail(newEmail) {
+    email = newEmail;
     notifyListeners();
   }
 
-  void updateEmail(emailValue){
-    email=emailValue;
+  updatePassword(newPassword) {
+    password = newPassword;
     notifyListeners();
   }
 }
