@@ -17,7 +17,9 @@ class LandingScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              
               SizedBox(height: 130),
+              Text('RECIPIFY',style: TextStyle(fontSize: 40,fontWeight: FontWeight.w600,color: Colors.white),textAlign: TextAlign.center,),
               Hero(
                 tag: 'logo',
                 child: Container(
@@ -30,7 +32,7 @@ class LandingScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 130),
+              SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[

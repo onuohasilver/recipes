@@ -28,3 +28,27 @@ class SlimButton extends StatelessWidget {
     );
   }
 }
+
+class SlimButtonIcon extends StatelessWidget {
+  SlimButtonIcon({this.onTap, this.color,this.icon});
+  final Function onTap;
+  final Color color;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(34, 10, 34, 10),
+            child: Icon(icon,color: Colors.white,)
+          ),
+          elevation: 10,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          color:color),
+    );
+  }
+}

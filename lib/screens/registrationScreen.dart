@@ -79,7 +79,7 @@ class RegistrationScreen extends StatelessWidget {
                                       email: userData.email,
                                       password: userData.password);
                               if (loggedinUser != null) {
-                                Navigator.pushNamed(context, 'HomeScreen');
+                                Navigator.pushNamed(context, 'CameraScreen');
                               }
                             } catch (e) {}
                           },
