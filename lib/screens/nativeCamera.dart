@@ -32,7 +32,12 @@ class _CameraState extends State<Camera> {
     controller = CameraController(widget.camera, ResolutionPreset.high);
     controllerFuture = controller.initialize();
   }
-
+   @override
+  void dispose() {
+    // Dispose of the controller when the widget is disposed.
+    controller.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +77,10 @@ class _CameraState extends State<Camera> {
                               BoxShadow(color: Colors.grey, blurRadius: 5.0)
                             ]),
                         child: IconButton(
-                            icon: Icon(Icons.refresh), onPressed: () {}),
+                            icon: Icon(Icons.refresh),
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(context, 'HomeScreen');
+                            }),
                       ),
                       Stack(
                         children: <Widget>[
@@ -135,8 +143,8 @@ class _CameraState extends State<Camera> {
                             ]),
                         child: IconButton(
                             icon: Icon(Icons.photo_size_select_actual),
-                            onPressed: () {
-                              pickImage();
+                            onPressed: () async {
+                              await pickImage();
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
