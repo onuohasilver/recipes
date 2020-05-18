@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'dart:io';
@@ -14,6 +15,18 @@ class Camera extends StatefulWidget {
 class _CameraState extends State<Camera> {
   CameraController controller;
   Future<void> controllerFuture;
+
+  File pickedImage;
+  bool picked = false;
+  Future<void> pickImage() async {
+    var tempStore = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      pickedImage = tempStore;
+      picked = true;
+      print('tapped');
+    });
+  }
+
   void initState() {
     super.initState();
     controller = CameraController(widget.camera, ResolutionPreset.high);
@@ -44,21 +57,32 @@ class _CameraState extends State<Camera> {
               child: Container(
                   height: 200,
                   width: double.infinity,
-                  decoration: BoxDecoration(color: Colors.white),
+                  decoration: BoxDecoration(color: Colors.orange[50]),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
+                      Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(color: Colors.grey, blurRadius: 5.0)
+                            ]),
+                        child: IconButton(
+                            icon: Icon(Icons.refresh), onPressed: () {}),
+                      ),
                       Stack(
                         children: <Widget>[
                           Container(
                             height: 150,
                             width: 150,
                             child: Material(
-                             
                               shape: CircleBorder(),
                               color: Colors.orangeAccent,
-                              elevation: 10,
+                              elevation: 20,
                             ),
                           ),
                           Positioned.fill(
@@ -79,9 +103,11 @@ class _CameraState extends State<Camera> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) =>
-                                                DisplayScreen(
-                                                    imagePath: path),
+                                            builder: (context) => DisplayScreen(
+                                              imagePath: path,
+                                              gallery: false,
+                                              pickedImage: pickedImage,
+                                            ),
                                           ),
                                         );
                                       } catch (e) {}
@@ -97,6 +123,30 @@ class _CameraState extends State<Camera> {
                             ),
                           )
                         ],
+                      ),
+                      Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(color: Colors.grey, blurRadius: 5.0)
+                            ]),
+                        child: IconButton(
+                            icon: Icon(Icons.photo_size_select_actual),
+                            onPressed: () {
+                              pickImage();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DisplayScreen(
+                                    gallery: picked,
+                                    pickedImage: pickedImage,
+                                  ),
+                                ),
+                              );
+                            }),
                       )
                     ],
                   )),
@@ -109,13 +159,21 @@ class _CameraState extends State<Camera> {
 
 class DisplayScreen extends StatelessWidget {
   final String imagePath;
-  DisplayScreen({this.imagePath});
+  final bool gallery;
+  final File pickedImage;
+  DisplayScreen({this.imagePath, this.gallery, this.pickedImage});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Image.file(
-        File(imagePath),
-      ),
-    );
+        body: gallery
+            ? Container(
+                height: 600,
+                width: 400,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                        image: FileImage(pickedImage), fit: BoxFit.cover)),
+              )
+            : Image.file(File(imagePath)));
   }
 }
