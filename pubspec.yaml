@@ -32,6 +32,8 @@ dependencies:
   camera: 0.5.7+2
   path: ^1.6.4
   path_provider: ^1.6.4
+  google_fonts: ^1.0.0
+
 
 
 dev_dependencies:

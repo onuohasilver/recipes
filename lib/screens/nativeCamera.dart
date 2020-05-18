@@ -5,6 +5,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'dart:io';
 
+import 'displayScreen.dart';
+
 class Camera extends StatefulWidget {
   Camera({this.camera});
   final CameraDescription camera;
@@ -29,15 +31,17 @@ class _CameraState extends State<Camera> {
 
   void initState() {
     super.initState();
-    controller = CameraController(widget.camera, ResolutionPreset.high);
+    controller = CameraController(widget.camera, ResolutionPreset.veryHigh);
     controllerFuture = controller.initialize();
   }
-   @override
+
+  @override
   void dispose() {
     // Dispose of the controller when the widget is disposed.
     controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +83,8 @@ class _CameraState extends State<Camera> {
                         child: IconButton(
                             icon: Icon(Icons.refresh),
                             onPressed: () {
-                              Navigator.pushReplacementNamed(context, 'HomeScreen');
+                              Navigator.pushReplacementNamed(
+                                  context, 'HomeScreen');
                             }),
                       ),
                       Stack(
@@ -108,7 +113,7 @@ class _CameraState extends State<Camera> {
                                                 .path,
                                             '${DateTime.now()}');
                                         await controller.takePicture(path);
-                                        Navigator.push(
+                                        Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => DisplayScreen(
@@ -145,7 +150,8 @@ class _CameraState extends State<Camera> {
                             icon: Icon(Icons.photo_size_select_actual),
                             onPressed: () async {
                               await pickImage();
-                              Navigator.push(
+                              
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => DisplayScreen(
@@ -162,26 +168,5 @@ class _CameraState extends State<Camera> {
             top: 30)
       ],
     ));
-  }
-}
-
-class DisplayScreen extends StatelessWidget {
-  final String imagePath;
-  final bool gallery;
-  final File pickedImage;
-  DisplayScreen({this.imagePath, this.gallery, this.pickedImage});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: gallery
-            ? Container(
-                height: 600,
-                width: 400,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(
-                        image: FileImage(pickedImage), fit: BoxFit.cover)),
-              )
-            : Image.file(File(imagePath)));
   }
 }
